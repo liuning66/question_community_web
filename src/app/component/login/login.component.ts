@@ -52,7 +52,9 @@ export class LoginComponent implements OnInit {
         loading.dismiss();
         if (res.code === 200) {
           this.storage.set('token', res.record.token);
-          this.storage.set('user', JSON.stringify(res.record));
+          this.storage.set('user', JSON.stringify(res.record)).then(val => {
+            this.router.navigate(['/tabs/tab5']);
+          });
         } else {
           this.baseui.showErrorToast(res.msg);
         }
@@ -62,7 +64,6 @@ export class LoginComponent implements OnInit {
       },
       complete: () => {
         this.submit = false;
-        this.router.navigate(['/tabs/tab5']);
       }
     });
   }

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref='/login' text='返回'></ion-back-button>
+    </ion-buttons>
+    <ion-title class="user_login">注册</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <ion-list class="q-margin-top-1">
+    <ion-item>
+      <ion-label>昵&nbsp;&nbsp;&nbsp;称:</ion-label>
+      <ion-input type="text" placeholder="请输入昵称" [(ngModel)]="nickname" (ionChange) = "validate(1)"></ion-input>
+      <ion-label *ngIf="nicknameExists">
+        <ion-text color="danger" class="tips_info">该昵称已存在!</ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>用户名:</ion-label>
+      <ion-input type="text" placeholder="请输入用户名" minlength=5 maxlength=16 [(ngModel)]="username" (ionChange)="validate(2)">
+      </ion-input>
+      <ion-label *ngIf="usernameExists">
+        <ion-text color="danger" class="tips_info">用户名已存在!</ion-text>
+      </ion-label>
+      <p></p>
+    </ion-item>
+    <ion-item>
+      <ion-label>密&nbsp;&nbsp;&nbsp;码:</ion-label>
+      <ion-input type="password" placeholder="请输入密码" maxlength=16 [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>确认密码:</ion-label>
+      <ion-input type="password" placeholder="请输入确认密码" maxlength=16 [(ngModel)]="confirmPassword"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>手机号:</ion-label>
+      <ion-input type="text" placeholder="请输入手机号" maxlength=11 [(ngModel)]="telephone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>邮&nbsp;&nbsp;&nbsp;箱:</ion-label>
+      <ion-input type="text" placeholder="请输入邮箱" [(ngModel)]="email"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" shape="round" padding (tap)="register()">
+    注册
+  </ion-button>
+</ion-content>

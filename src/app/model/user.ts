@@ -2,7 +2,8 @@ export class User {
     id: string;
     username: string; // 用户名
     token: string;
-    name: string; // 网名
+    nickname: string; // 昵称
     telephone: string;
     email: string;
+
 }

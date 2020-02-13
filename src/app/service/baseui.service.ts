@@ -21,7 +21,7 @@ export class BaseuiService {
     async showSuccessToast(msg: string) {
         const toast = await this.toastCtrl.create({
             message: msg,
-            duration: 2000,
+            duration: 1500,
             color: 'success',
             position: 'bottom'
         });
@@ -48,4 +48,10 @@ export class BaseuiService {
         toast.present();
     }
 
+    /**
+     *  判断是否是空字符串
+     */
+    isNullString(obj: string) {
+        return (obj.length === 0) || (obj == null);
+    }
 }

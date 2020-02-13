@@ -13,7 +13,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../indexTab/indexTab.module').then(m => m.Tab1PageModule)
+              import('../tab-index/tab-index.module').then(m => m.Tab1PageModule)
           }
         ]
       },

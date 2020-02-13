@@ -28,7 +28,7 @@
     </ion-label>
     <ion-input [(ngModel)]="password" [type]="showPwd ? 'text' : 'password' "  maxlength=16 placeholder = "请输入密码"></ion-input>
     <ion-label >
-       <ion-button (click)="isShowPwd()" color="light" class="icon-btn" size="small">
+       <ion-button (click)="isShowPwd()" color="light" class="icon-btn" size="small" fill='default'>
         <ion-icon slot="icon-only" [name]="showPwd ? 'eye-off' : 'eye'" ></ion-icon>
        </ion-button>
      </ion-label>
