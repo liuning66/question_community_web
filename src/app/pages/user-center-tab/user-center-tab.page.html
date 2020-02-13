@@ -1,0 +1,25 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-title>Title</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="!isLogin">
+    <ion-card class="card-bg">
+      <ion-card-header text-center>
+      <ion-card-title> 登录问答社区 </ion-card-title>
+      </ion-card-header>
+      <ion-card-content text-center>
+        <ion-button [routerLink]="['/login']">
+          登录/注册
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="isLogin">
+    123
+    hello {{ user.username }}
+  </div>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab5" icon="close"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="user_login">用户登录</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="login_logo">
+    <ion-avatar text-center class="logo_img">
+      <img src="../../../assets/icon/drawable-xxxhdpi-icon.png" />
+    </ion-avatar>
+  </div>
+
+  <ion-item class="q-margin-top-half login_item">
+    <ion-label>
+     <ion-icon name="person"></ion-icon>
+    </ion-label>
+    <ion-input [(ngModel)]="username"  minlength=5 maxlength=16 placeholder = "请输入用户名"></ion-input>
+  </ion-item>
+
+  <ion-item class="q-margin-top-half login_item">
+    <ion-label (tap) = "isShowPwd()">
+     <ion-icon name="lock"></ion-icon>
+    </ion-label>
+    <ion-input [(ngModel)]="password" [type]="showPwd ? 'text' : 'password' "  maxlength=16 placeholder = "请输入密码"></ion-input>
+    <ion-label >
+       <ion-button (click)="isShowPwd()" color="light" class="icon-btn" size="small">
+        <ion-icon slot="icon-only" [name]="showPwd ? 'eye-off' : 'eye'" ></ion-icon>
+       </ion-button>
+     </ion-label>
+  </ion-item>
+
+  <ion-button class="login_btn" (tap) = "login()"  [disabled]='submit'>
+    登录
+   </ion-button>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar text-center>
+    <a [routerLink]="['/register']" >注册账号</a> | <a [routerLink]="['/forget-password']">忘记密码</a>
+  </ion-toolbar>
+</ion-footer>

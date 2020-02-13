@@ -1,0 +1,35 @@
+.user_login {
+    margin-left: 3.5em;
+}
+.login_item {
+    border-radius: 1em;
+    padding: 0 10px;
+    font-size: 15px;
+}
+.icon-btn {
+    margin: 0;
+    background-color: rgba($color: transparent, $alpha: 0.1);
+    font-size: 12px;
+    transform: scale(0.8);
+    margin-top: -10px;
+}
+/**logo**/
+.login_logo {
+    box-sizing: content-box;
+    width: 64px;
+    background-color: #fff;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.login_btn {
+    display: block;
+    width: 100%;
+    margin: 1.5em auto;
+    padding: 0 10px;
+    
+}
+
+ion-footer {
+    background-color: #e5e6e8;
+}
