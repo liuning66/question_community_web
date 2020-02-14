@@ -6,11 +6,11 @@ import { User } from '../model/user';
   providedIn: 'root'
 })
 export class StorageService {
-  
+
   constructor(private storage: Storage) { }
 
-   set(key: string, value: any) {
-     return this.storage.set(key, value);
+  set(key: string, value: any) {
+    return this.storage.set(key, value);
   }
   get(key: string): Promise<any> {
     return this.storage.get(key);

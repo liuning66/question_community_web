@@ -23,7 +23,6 @@
       <ion-label *ngIf="usernameExists">
         <ion-text color="danger" class="tips_info">用户名已存在!</ion-text>
       </ion-label>
-      <p></p>
     </ion-item>
     <ion-item>
       <ion-label>密&nbsp;&nbsp;&nbsp;码:</ion-label>
@@ -42,7 +41,8 @@
       <ion-input type="text" placeholder="请输入邮箱" [(ngModel)]="email"></ion-input>
     </ion-item>
   </ion-list>
-  <ion-button expand="block" shape="round" padding (tap)="register()">
+  <ion-button expand="block" shape="round" padding (tap)="register()" [disabled] = '!submit'>
     注册
   </ion-button>
+
 </ion-content>

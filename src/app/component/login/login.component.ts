@@ -48,13 +48,13 @@ export class LoginComponent implements OnInit {
 
     const loading = await this.baseui.showLoading('正在登录中...');
     this.http.post<LoginResult<User>>(HTTPUrl.LOGIN, param, {
-      success: (res: LoginResult<User>) => {
+      success:  (res: LoginResult<User>) => {
         loading.dismiss();
         if (res.code === 200) {
-          this.storage.set('token', res.record.token);
-          this.storage.set('user', JSON.stringify(res.record)).then(val => {
+           this.storage.set('token', res.record.token);
+           this.storage.set('user', JSON.stringify(res.record)).then((val) => {
             this.router.navigate(['/tabs/tab5']);
-          });
+           });
         } else {
           this.baseui.showErrorToast(res.msg);
         }

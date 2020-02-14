@@ -1,0 +1,53 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button  defaultHref = '/tabs/tab5' text='个人中心'></ion-back-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list class="q-margin-top-15" lines="full"> 
+      <ion-item detail>
+        <ion-text slot="start">
+          <strong>头像</strong>
+        </ion-text>
+        <ion-avatar slot="end">
+          <img src="../../../assets/icon/drawable-hdpi-icon.png" />
+        </ion-avatar>
+        
+      </ion-item>
+      <ion-item detail>
+        <ion-text slot="start">
+         <strong>昵称</strong>
+        </ion-text>
+        <ion-text slot="end" color="medium" style="font-size: 15px;">
+          {{user.nickname}}
+         </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text slot="start">
+         <strong>用户名</strong>
+        </ion-text>
+        <ion-text slot="end" color="medium" style="font-size: 15px;">
+          {{user.username}}
+         </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text slot="start">
+         <strong>手机号</strong>
+        </ion-text>
+        <ion-text slot="end" color="medium" style="font-size: 15px;">
+          {{user.telephone}}
+         </ion-text>
+      </ion-item>
+      <ion-item detail>
+        <ion-text slot="start">
+         <strong>二维码名片</strong>
+        </ion-text>
+        <ion-icon slot="end" name="qr-code"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-app>

@@ -5,5 +5,5 @@ export class User {
     nickname: string; // 昵称
     telephone: string;
     email: string;
-
+    
 }

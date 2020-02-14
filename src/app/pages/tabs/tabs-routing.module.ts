@@ -23,7 +23,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../tab-okami-list/tab2.module').then(m => m.Tab2PageModule)
           }
         ]
       },
@@ -33,7 +33,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../tab-notice/tab3.module').then(m => m.Tab3PageModule)
           }
         ]
       },
@@ -42,7 +42,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren:() => import('../tab4/tab4.module').then(m => m.Tab4PageModule)
+            loadChildren:() => import('../tab-tribe/tab4.module').then(m => m.Tab4PageModule)
           }
         ]
       },
@@ -51,7 +51,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../user-center-tab/user-center-tab.module').then(m => m.Tab5PageModule)
+            loadChildren: () => import('../tab-mine/tab-mine.module').then(m => m.Tab5PageModule)
           }
         ]
       },

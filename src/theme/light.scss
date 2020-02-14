@@ -1,8 +1,13 @@
 @import "./general.scss";
+@import "./reset.scss";
 ion-content {
     --background: #e5e6e8 !important;
 }
 ion-toast {
     --max-width: calc(60% - 20px);
     text-align: center !important;
+}
+//根据需要来
+ion-list {
+    padding: 0 !important;
 }

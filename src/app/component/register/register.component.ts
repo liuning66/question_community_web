@@ -110,6 +110,6 @@ export class RegisterComponent implements OnInit {
       complete: () => {
         this.submit = true;
       }
-    })
+    });
   }
 }
