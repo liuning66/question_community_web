@@ -8,7 +8,7 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'tab-index',
         children: [
           {
             path: '',
@@ -18,7 +18,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
+        path: 'tab-okami-list',
         children: [
           {
             path: '',
@@ -28,7 +28,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'tab-notice',
         children: [
           {
             path: '',
@@ -38,7 +38,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab4',
+        path: 'tab-tribe',
         children: [
           {
             path: '',
@@ -47,7 +47,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab5',
+        path: 'tab-mine',
         children: [
           {
             path: '',
@@ -57,14 +57,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/tab-index',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/tab-index',
     pathMatch: 'full'
   }
 ];

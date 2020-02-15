@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { StorageService } from 'src/app/service/storage.service';
+import { ModalController } from '@ionic/angular';
+import { UpdateNicknameComponent } from './modal/update-nickname/update-nickname.component';
 
 @Component({
   selector: 'app-user-center',
@@ -8,12 +10,33 @@ import { StorageService } from 'src/app/service/storage.service';
   styleUrls: ['./user-center.component.scss'],
 })
 export class UserCenterComponent implements OnInit {
-  user: User  = new User();
-  constructor(private storage: StorageService) { }
+  user: User = new User();
+  constructor(private storage: StorageService, private modalController: ModalController) { }
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.loadUserInfo();
+  }
+
+  dismiss() {
+    this.modalController.dismiss();
+  }
+
+  async loadUserInfo() {
     this.user = JSON.parse(await this.storage.get('user'));
-    console.log(this.user);
+  }
+
+  async updateNickName() {
+    const modal = await this.modalController.create({
+      component: UpdateNicknameComponent,
+      componentProps: {
+        id: this.user.id,
+        nickname: this.user.nickname
+      }
+    });
+    modal.onDidDismiss().then(() => {
+      this.loadUserInfo();
+    });
+    await modal.present();
   }
 
 }

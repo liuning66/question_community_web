@@ -7,6 +7,7 @@ import { User } from 'src/app/model/user';
 import { HTTPUrl } from 'src/app/model/http';
 import { LoginResult } from 'src/app/model/login_result';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +15,18 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  username: string = '';
-  password: string = '';
+  username = '';
+  password = '';
   showPwd = false;
   submit = false; // 防止用户多次点击登录
-  constructor(private storage: StorageService, private router: Router, private baseui: BaseuiService, private http: HttpService) { }
+  constructor(private storage: StorageService, private router: Router, private baseui: BaseuiService, private http: HttpService,
+    private modalController: ModalController) { }
 
   ngOnInit() {
+  }
+
+  dismiss() {
+    this.modalController.dismiss();
   }
 
   isShowPwd() {
@@ -48,13 +54,12 @@ export class LoginComponent implements OnInit {
 
     const loading = await this.baseui.showLoading('正在登录中...');
     this.http.post<LoginResult<User>>(HTTPUrl.LOGIN, param, {
-      success:  (res: LoginResult<User>) => {
+      success: (res: LoginResult<User>) => {
         loading.dismiss();
         if (res.code === 200) {
-           this.storage.set('token', res.record.token);
-           this.storage.set('user', JSON.stringify(res.record)).then((val) => {
-            this.router.navigate(['/tabs/tab5']);
-           });
+          this.storage.set('token', res.record.token);
+          this.storage.set('user', JSON.stringify(res.record));
+          this.modalController.dismiss();
         } else {
           this.baseui.showErrorToast(res.msg);
         }

@@ -2,7 +2,7 @@
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button  defaultHref = '/tabs/tab5' text='个人中心'></ion-back-button>
+        <ion-back-button  defaultHref = '/tabs/tab-mine' text='个人中心' (tap) = "dismiss()"></ion-back-button>
       </ion-buttons>
 
     </ion-toolbar>
@@ -18,7 +18,7 @@
         </ion-avatar>
         
       </ion-item>
-      <ion-item detail>
+      <ion-item detail button (tap) = "updateNickName()">
         <ion-text slot="start">
          <strong>昵称</strong>
         </ion-text>

@@ -11,7 +11,7 @@
         <ion-card-title> 登录问答社区 </ion-card-title>
       </ion-card-header>
       <ion-card-content text-center>
-        <ion-button [routerLink]="['/login']">
+        <ion-button (tap) = "goToLoginPage()">
           登录/注册
         </ion-button>
       </ion-card-content>
@@ -20,13 +20,13 @@
 
   <div *ngIf="isLogin">
     <ion-list class="q-margin-top-15" lines = "full">
-      <ion-item button detail class="" [routerLink]="['/tabs/tab5/user-center']"  >
+      <ion-item button detail (tap) = "goToUserCenter()">
         <ion-avatar>
           <img src="../../../assets/icon/drawable-hdpi-icon.png" />
         </ion-avatar>
         <div>
           <strong>{{user.nickname}}</strong>
-          <p class="introduction">查看个人主页或编辑个人资料</p>
+          <p class="introduction">查看个人中心或编辑个人资料</p>
         </div>
       </ion-item>
     </ion-list>

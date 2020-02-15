@@ -8,10 +8,6 @@ const routes: Routes = [
     path: '',
     component: Tab5Page
   },
-  {
-    path: 'user-center',
-    loadChildren: () => import('../../component/user-center/user-center.module').then(m => m.UserCenterModule)
-  }
 ];
 
 @NgModule({

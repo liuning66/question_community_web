@@ -1,0 +1,20 @@
+<ion-app>
+ <ion-header>
+   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref='/tabs/tab-mine' text="修改昵称" (tap) = "dismiss()"></ion-back-button>
+    </ion-buttons>
+   </ion-toolbar>
+ </ion-header>
+ <ion-content>
+   <ion-item class="q-margin-top-1">
+     <ion-label>
+       <strong>当前昵称:</strong>
+     </ion-label>
+     <ion-input type="text" [(ngModel)]="nickname"></ion-input>
+   </ion-item>
+    <ion-button  expand="block"  shape="round" class="save_btn " (tap) = "update()">
+      保存
+    </ion-button>
+ </ion-content>
+</ion-app>

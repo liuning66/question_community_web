@@ -5,6 +5,7 @@ import { UserCenterRoutingModule } from './user-center-routing.module';
 import { UserCenterComponent } from './user-center.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { ModalModule } from './modal/modal.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     UserCenterRoutingModule,
     IonicModule,
-    FormsModule
+    FormsModule,
+    ModalModule
   ]
 })
 export class UserCenterModule { }
