@@ -40,7 +40,7 @@ export class Tab5Page implements OnInit {
     });
     modal.onDidDismiss().then(()=>{
       this.loadUserInfo();
-    })
+    });
     await modal.present();
   }
   /**
@@ -53,5 +53,10 @@ export class Tab5Page implements OnInit {
       this.isLogin = true;
     }
   }
-  
+
+  reLogin() {
+    this.storage.clear().then(() => {
+      this.goToLoginPage();
+    });
+  }
 }

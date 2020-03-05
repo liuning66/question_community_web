@@ -3,6 +3,7 @@ import { User } from 'src/app/model/user';
 import { StorageService } from 'src/app/service/storage.service';
 import { ModalController } from '@ionic/angular';
 import { UpdateNicknameComponent } from './modal/update-nickname/update-nickname.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-center',
@@ -39,4 +40,5 @@ export class UserCenterComponent implements OnInit {
     await modal.present();
   }
 
+ 
 }

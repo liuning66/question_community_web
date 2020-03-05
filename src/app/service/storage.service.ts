@@ -15,8 +15,8 @@ export class StorageService {
   get(key: string): Promise<any> {
     return this.storage.get(key);
   }
-  clear() {
-    this.storage.clear();
+  clear(): Promise<void> {
+    return this.storage.clear();
   }
 
 

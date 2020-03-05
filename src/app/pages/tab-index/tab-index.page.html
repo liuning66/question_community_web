@@ -1,11 +1,58 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      首页
-    </ion-title>
+    <ion-searchbar placeholder="搜索：Angular入门" [debounce]="250" class="searchbar"></ion-searchbar>
+    <ion-icon name="chatbubble" class="top_header_message_icon" [routerLink]="['/tabs/tab-okami-list']"></ion-icon>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
+  <div class="floatMenu">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="4" text-center>
+          <div (tap)="goQuestion()">
+            <ion-icon name="create"></ion-icon>
+            提问
+          </div>
+        </ion-col>
+        <ion-col size="4" text-center>
+          <div>
+            <span style="float:left;color:#ddd">|</span>
+            <ion-icon name="albums"></ion-icon>
+            问答
+          </div>
+        </ion-col>
+        <ion-col size="4" text-center>
+          <div>
+            <span style="float:left;color:#ddd">|</span>
+            <ion-icon name="share-alt"></ion-icon>
+            分享
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
+  <ion-card type="button" class="card" *ngFor="let item of questionInfoList">
+    <ion-item>
+      <ion-avatar class="avatar">
+        <img src="../../../assets/icon/drawable-hdpi-icon.png" />
+      </ion-avatar>
+      <p class="header-title" >
+       {{dateParse(item.questionTime)}}&nbsp; {{item.nickname}} 发表了该问题
+      </p>
+      <ion-icon slot="end" name="more" class="more"></ion-icon>
+    </ion-item>
+    <h3 class="content-title">{{item.title}}</h3>
+    <ion-card-content class="content">
+      <p>{{item.content}}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col size="8" center text-left>
+        <ion-note class="note">{{item.approve}}&nbsp;赞同&nbsp;&nbsp;{{item.commentNum}}&nbsp;评论&nbsp;&nbsp;关注问题</ion-note>
+      </ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

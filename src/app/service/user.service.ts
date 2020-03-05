@@ -6,11 +6,12 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class UserService {
-  user: User;
+   user: User;
   constructor(private storage: StorageService) { }
 
-  async getUser(): Promise<User> {
+   async getUserId(): Promise<string> {
     this.user = JSON.parse(await this.storage.get('user'));
-    return this.user;
+    return this.user.id;
   }
+
 }
