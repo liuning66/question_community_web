@@ -8,6 +8,7 @@ import { HTTPUrl } from 'src/app/model/http';
 import { LoginResult } from 'src/app/model/login_result';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,10 @@ export class LoginComponent implements OnInit {
   password = '';
   showPwd = false;
   submit = false; // 防止用户多次点击登录
-  constructor(private storage: StorageService, private router: Router, private baseui: BaseuiService, private http: HttpService,
+  constructor(private storage: StorageService,
+    private router: Router,
+    private baseui: BaseuiService,
+    private http: HttpService,
     private modalController: ModalController) { }
 
   ngOnInit() {
@@ -34,7 +38,6 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    console.log(123);
     if (this.username.length === 0 || this.username == null) {
       this.baseui.showWarningToast('用户名不能为空！');
       return;
@@ -73,5 +76,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   * 跳转到注册界面
+  */
+  async goToRegisterPage() {
+    const modal = await this.modalController.create({
+      component: RegisterComponent,
+    });
+
+    await modal.present();
+
+  }
 }
 

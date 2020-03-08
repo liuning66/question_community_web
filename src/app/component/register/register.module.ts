@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
         RegisterRoutingModule,
         IonicModule,
         FormsModule
-    ]
+    ],
+    bootstrap: [RegisterComponent]
 })
 export class RegisterModule {
 }

@@ -28,6 +28,7 @@ export class Tab5Page implements OnInit {
     });
     modal.onDidDismiss().then(() => {
       this.loadUserInfo();
+      this.isLogin = false;
     });
     await modal.present();
   }
@@ -38,7 +39,7 @@ export class Tab5Page implements OnInit {
     const modal = await this.modalController.create({
       component: UserCenterComponent
     });
-    modal.onDidDismiss().then(()=>{
+    modal.onDidDismiss().then(() => {
       this.loadUserInfo();
     });
     await modal.present();
@@ -49,11 +50,13 @@ export class Tab5Page implements OnInit {
   async loadUserInfo() {
     this.user = JSON.parse(await this.storage.get('user'));
     if (this.user) {
-      console.log(this.user);
       this.isLogin = true;
     }
   }
 
+  /**
+   * 退出登录
+   */
   reLogin() {
     this.storage.clear().then(() => {
       this.goToLoginPage();

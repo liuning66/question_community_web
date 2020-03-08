@@ -9,4 +9,6 @@ export class QuestionInfo {
     approve: number; // 点赞数
     status: number; // 状态
     isPass: number;
+    hasBestAnswer: boolean; // 是否已有最佳回答
+    favorite: boolean;
 }

@@ -4,6 +4,11 @@ import { QuestionComponent } from 'src/app/component/question/question.component
 import { HttpService } from 'src/app/service/http.service';
 import { HTTPUrl } from 'src/app/model/http';
 import { QuestionInfo } from 'src/app/model/questionInfo';
+import { Router } from '@angular/router';
+import { QuestionDetail } from 'src/app/model/question-detail';
+import { QuestionDetailComponent } from 'src/app/component/question-detail/question-detail.component';
+import { UserService } from 'src/app/service/user.service';
+import { BaseuiService } from 'src/app/service/baseui.service';
 
 @Component({
   selector: 'app-tab1',
@@ -12,17 +17,29 @@ import { QuestionInfo } from 'src/app/model/questionInfo';
 })
 export class Tab1Page implements OnInit {
   questionInfoList: Array<QuestionInfo> = [];
+  loginStatus = false;
+  constructor(private modalCtrl: ModalController,
+    private http: HttpService,
+    private baseui: BaseuiService,
+    private userService: UserService,
+    private router: Router) { }
 
-  constructor(private modalCtrl: ModalController, private http: HttpService) { }
-
-  ngOnInit() {
+  async ngOnInit() {
+    console.log(this.userService.isLogin());
     this.requestQuestionInfo();
+  }
+  async ionViewWillEnter() {
+    this.loginStatus = await this.userService.isLogin();
   }
   /**
    * 前往提问页面
    */
   async goQuestion() {
-    console.log(123);
+    if (!this.loginStatus) {
+      this.baseui.showWarningToast('您当前尚未登录,请先登录');
+      this.router.navigate(['/tabs/tab-mine']);
+      return;
+    }
     const modal = await this.modalCtrl.create({
       component: QuestionComponent,
       animated: false,
@@ -40,7 +57,6 @@ export class Tab1Page implements OnInit {
     this.http.post<Array<QuestionInfo>>(HTTPUrl.GET_ALL_QUESTIONINFO, {}, {
       success: (res: Array<QuestionInfo>) => {
         if (res) {
-          console.log(res);
           this.questionInfoList = res;
         }
       },
@@ -57,6 +73,28 @@ export class Tab1Page implements OnInit {
   dateParse(dateStr: string): string {
     const date = new Date(dateStr);
     return date.toLocaleDateString().replace(/\//g, '-');
+  }
+
+  /**
+   * 跳转到 详情页面
+   */
+  async goToQuestionDetail(data: QuestionInfo) {
+    if (!this.loginStatus) {
+      this.baseui.showWarningToast('您当前尚未登录,请先登录');
+      this.router.navigate(['/tabs/tab-mine']);
+      return;
+    }
+    const modal = await this.modalCtrl.create({
+      component: QuestionDetailComponent,
+      componentProps: {
+        questionId: data.id,
+        questionUserId: data.userId
+      }
+    });
+    modal.onDidDismiss().then(() => {
+      this.requestQuestionInfo();
+    });
+    await modal.present();
   }
 
 }

@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab-index.page';
-import { QuestionComponent } from 'src/app/component/question/question.component';
 import { QuestionModule } from 'src/app/component/question/question.module';
+import { QuestionDetailModule } from 'src/app/component/question-detail/question-detail.module';
 
 @NgModule({
   imports: [
@@ -14,8 +14,9 @@ import { QuestionModule } from 'src/app/component/question/question.module';
     FormsModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }]),
     QuestionModule,
+    QuestionDetailModule
   ],
   declarations: [Tab1Page],
-  entryComponents: [QuestionComponent]
+
 })
 export class Tab1PageModule { }

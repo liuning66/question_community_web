@@ -34,7 +34,7 @@
     </ion-grid>
   </div>
 
-  <ion-card type="button" class="card" *ngFor="let item of questionInfoList">
+  <ion-card type="button" class="card" *ngFor="let item of questionInfoList" (tap)="goToQuestionDetail(item)">
     <ion-item>
       <ion-avatar class="avatar">
         <img src="../../../assets/icon/drawable-hdpi-icon.png" />

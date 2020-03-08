@@ -4,6 +4,7 @@ import { BaseuiService } from 'src/app/service/baseui.service';
 import { HTTPUrl } from 'src/app/model/http';
 import { Result } from 'src/app/model/result';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -17,10 +18,13 @@ export class RegisterComponent implements OnInit {
   confirmPassword = '';
   telephone = '';
   email = '';
-  submit  = true; // 防止用户多次点击注册按钮
+  submit = true; // 防止用户多次点击注册按钮
   nicknameExists = false; // 昵称是否存在
   usernameExists = false; // 用户名是否存在
-  constructor(private http: HttpService, private baseui: BaseuiService, private router: Router) { }
+  constructor(private http: HttpService,
+    private baseui: BaseuiService,
+    private router: Router,
+    private modalCtroller: ModalController) { }
 
   ngOnInit() { }
 
@@ -111,5 +115,9 @@ export class RegisterComponent implements OnInit {
         this.submit = true;
       }
     });
+  }
+
+  dismiss() {
+    this.modalCtroller.dismiss();
   }
 }

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     QuestionRoutingModule,
     FormsModule,
     IonicModule
-  ]
+  ],
+  bootstrap: [QuestionComponent]
 })
 export class QuestionModule { }

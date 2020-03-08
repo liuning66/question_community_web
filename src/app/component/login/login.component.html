@@ -29,7 +29,7 @@
     </ion-label>
     <ion-input [(ngModel)]="password" [type]="showPwd ? 'text' : 'password' "  maxlength=16 placeholder = "请输入密码"></ion-input>
     <ion-label >
-       <ion-button (click)="isShowPwd()" color="light" class="icon-btn" size="small" fill='default'>
+       <ion-button (tap)="isShowPwd()" color="light" class="icon-btn" size="small" fill='default'>
         <ion-icon slot="icon-only" [name]="showPwd ? 'eye-off' : 'eye'" ></ion-icon>
        </ion-button>
      </ion-label>
@@ -42,6 +42,6 @@
 
 <ion-footer>
   <ion-toolbar text-center>
-    <a [routerLink]="['/register']" >注册账号</a> | <a [routerLink]="['/forget-password']">忘记密码</a>
+    <a (tap) = "goToRegisterPage()" >注册账号</a> | <a [routerLink]="['/forget-password']">忘记密码</a>
   </ion-toolbar>
 </ion-footer>
