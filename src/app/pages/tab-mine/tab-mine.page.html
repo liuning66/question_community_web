@@ -4,14 +4,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
   <div *ngIf="!isLogin" padding>
     <ion-card class="card-bg">
       <ion-card-header text-center>
         <ion-card-title> 登录问答社区 </ion-card-title>
       </ion-card-header>
       <ion-card-content text-center>
-        <ion-button (tap) = "goToLoginPage()">
+        <ion-button (tap)="goToLoginPage()">
           登录/注册
         </ion-button>
       </ion-card-content>
@@ -19,8 +19,8 @@
   </div>
 
   <div *ngIf="isLogin">
-    <ion-list class="q-margin-top-15" lines = "full">
-      <ion-item button detail (tap) = "goToUserCenter()">
+    <ion-list class="q-margin-top-15" lines="full">
+      <ion-item button detail (tap)="goToUserCenter()">
         <ion-avatar>
           <img src="../../../assets/icon/drawable-hdpi-icon.png" />
         </ion-avatar>
@@ -29,9 +29,41 @@
           <p class="introduction">查看个人中心或编辑个人资料</p>
         </div>
       </ion-item>
-      <ion-button (tap)="reLogin()" class="reLogin-btn" color="primary">
-        退出登录
-       </ion-button>
+
     </ion-list>
+
+
+    <ion-list style="margin-top: 5px;">
+      <ion-item button detail lines='full' (tap) = "goToGeneralList(1)">
+        <ion-icon name="paper" color="primary"></ion-icon>
+        <ion-text class="text">我的提问</ion-text>
+      </ion-item>
+      <ion-item lines='full' button detail (tap) = "goToGeneralList(2)">
+        <ion-icon name="book" color="tertiary"></ion-icon>
+        <ion-text class="text">我的文章</ion-text>
+      </ion-item>
+      <ion-item button detail lines='full' (tap) = "goToGeneralList(3)">
+        <ion-icon name="star" color="warning"></ion-icon>
+        <ion-text class="text">我的收藏</ion-text>
+      </ion-item>
+      <ion-item button detail lines='full' (tap) = "goToGeneralList(4)">
+        <ion-icon name="disc" color="seprimary"></ion-icon>
+        <ion-text class="text">我的关注</ion-text>
+      </ion-item>
+    </ion-list>
+
+    <ion-list style="margin-top: 5px;">
+      <ion-item detail lines='full' (tap) = "goToQrScanner()" button>
+        <ion-icon name="qr-scanner" color="medium"></ion-icon>
+        <ion-text class="text">扫描二维码</ion-text>
+      </ion-item>
+      <ion-item detail lines='full' button (tap) = "goToVersionPage()">
+        <ion-icon name="help" color="dark"></ion-icon>
+        <ion-text class="text">关于</ion-text>
+      </ion-item>
+    </ion-list>
+    <ion-button (tap)="reLogin()" class="reLogin-btn" color="primary">
+      退出登录
+    </ion-button>
   </div>
 </ion-content>

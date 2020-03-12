@@ -25,7 +25,6 @@ export class Tab1Page implements OnInit {
     private router: Router) { }
 
   async ngOnInit() {
-    console.log(this.userService.isLogin());
     this.requestQuestionInfo();
   }
   async ionViewWillEnter() {
@@ -97,4 +96,13 @@ export class Tab1Page implements OnInit {
     await modal.present();
   }
 
+  /**
+   *  下拉刷新
+   */
+  refresh(e) {
+    this.requestQuestionInfo();
+    setTimeout(() => {
+      e.target.complete();
+    }, 1000);
+  }
 }

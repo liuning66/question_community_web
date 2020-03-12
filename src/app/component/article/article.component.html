@@ -1,0 +1,27 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/tab-index" (tap)="dismiss()" icon="close"></ion-back-button>
+      </ion-buttons>
+      <ion-text color="primary">
+        <h1 class="question-text">新增文章</h1>
+      </ion-text>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-margin-top">
+    <ion-list>
+      <ion-item>
+        <ion-label><strong>文章标题</strong></ion-label>
+        <ion-input type="text" placeholder="请输入标题" [(ngModel)]="articleTitle"></ion-input>
+      </ion-item>
+        <ion-item>
+          <ion-label><strong>文章内容</strong></ion-label>
+          <ion-textarea rows="20" cols="30" placeholder="请输入问题内容" [(ngModel)]="articleContent"></ion-textarea>
+        </ion-item>
+    </ion-list>
+    <ion-button  expand="block" class="ion-padding-horizontal ion-margin-top" (tap)="submit()">
+      提交
+    </ion-button>
+  </ion-content>
+</ion-app>

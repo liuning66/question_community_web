@@ -1,0 +1,58 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref = "/tabs/tab-tribe" text="返回" (tap) = "dismiss()"></ion-back-button>
+      </ion-buttons>
+      <ion-title  class="header-title">{{articleInfo.title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card type="button" class="card" >
+      <div>
+        <ion-card-content class="content">
+          <p>{{articleInfo.content}}</p>
+        </ion-card-content>
+      </div>
+      <ion-row>
+        <ion-col size="9" center  class="comment">
+          <span style="margin-left: 16px;">{{articleInfo.commentNum}}&nbsp;&nbsp;评论</span>
+        </ion-col>
+        <ion-col size="3" text-right>
+        <div *ngIf="articleInfo.userId != userId">
+         <ion-button (tap)="goToCommentPage()" color="primary">
+           评论
+         </ion-button>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+
+       <!--评论-->
+       <ion-card type="button" class="comment-card" *ngFor="let item of comments; let i = index;">
+        <ion-item lines="none">
+          <ion-avatar class="avatar">
+            <img src="../../../assets/icon/drawable-hdpi-icon.png" />
+          </ion-avatar>
+          <p class="header-title">
+            <span class="answer-time"> {{dateParse(item.commentTime)}}</span>&nbsp;{{item.nickname}}评论了您
+          </p>
+        </ion-item>
+        <ion-card-content class="content">
+          <p>{{item.commentContent}}</p>
+        </ion-card-content>
+        <ion-item>
+          <div slot="start">
+            <ion-button color="light" fill='default' size="small" (tap) = "approval(item.id,i)" [disabled] = "disabledArr.indexOf(item.id) >= 0">
+              <ion-icon name="thumbs-up"></ion-icon> &nbsp; {{item.approvalNum}}
+            </ion-button>
+            <ion-button color="light" fill='default' size="small" (tap) = "disApproval(item.id,i)" [disabled] = "disabledArr.indexOf(item.id) >= 0">
+              <ion-icon name="thumbs-down"></ion-icon> &nbsp; {{item.disapprovalNum}}
+            </ion-button>
+          </div>
+        </ion-item>
+  
+      </ion-card>
+  </ion-content>
+</ion-app>

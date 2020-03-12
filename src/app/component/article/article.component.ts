@@ -1,50 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { HttpService } from 'src/app/service/http.service';
 import { UserService } from 'src/app/service/user.service';
 import { BaseuiService } from 'src/app/service/baseui.service';
-import { HttpService } from 'src/app/service/http.service';
 import { Result } from 'src/app/model/result';
 import { HTTPUrl } from 'src/app/model/http';
 
 @Component({
-  selector: 'app-question',
-  templateUrl: './question.component.html',
-  styleUrls: ['./question.component.scss'],
+  selector: 'app-article',
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.scss'],
 })
-export class QuestionComponent implements OnInit {
-  title = '';
-  content = '';
+export class ArticleComponent implements OnInit {
+  articleTitle: string;
+  articleContent: string;
   userId: string;
   constructor(private modalController: ModalController,
+    private http: HttpService,
     private userService: UserService,
-    private baseui: BaseuiService,
-    private http: HttpService) { }
+    private baseui: BaseuiService) { }
 
   async ngOnInit() {
     this.userId = await this.userService.getUserId();
   }
 
-  /**
-   * 提交问题
-   */
+
+
+
   submit() {
-    if (this.title == null || this.title.length <= 0) {
-      this.baseui.showWarningToast('问题标题不能为空!');
+    if (this.articleTitle == null || this.articleTitle.length <= 0) {
+      this.baseui.showWarningToast('文章标题不能为空!');
       return;
-    } else if (this.content == null || this.content.length <= 0) {
-      this.baseui.showWarningToast('问题内容不能为空!');
+    } else if (this.articleContent == null || this.articleContent.length <= 0) {
+      this.baseui.showWarningToast('文章内容不能为空!');
       return;
     }
 
     const param = {
       userId: this.userId,
-      title: this.title,
-      content: this.content
+      title: this.articleTitle,
+      content: this.articleContent
     };
-    this.http.post<Result>(HTTPUrl.PUBLISH_QUESTION, param, {
+    this.http.post<Result>(HTTPUrl.PUBLISH_ARTICLE, param, {
       success: (res: Result) => {
         if (res.status === 200) {
-          this.baseui.showSuccessToast('提问成功!');
+          this.baseui.showSuccessToast('发表成功!');
           this.modalController.dismiss();
         } else {
           this.baseui.showErrorToast(res.msg);
@@ -56,6 +56,8 @@ export class QuestionComponent implements OnInit {
       complete: () => { }
     });
   }
+
+
   dismiss() {
     this.modalController.dismiss();
   }

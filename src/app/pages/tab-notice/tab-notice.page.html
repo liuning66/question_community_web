@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title center>
+      通知
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of noticeList" style="margin-bottom: 10px;">
+      <div class="notice">
+        <div class="notice-left">
+          <ion-avatar item-left class="avatar">
+            <img src="../../../assets/icon/drawable-hdpi-icon.png" />
+          </ion-avatar>
+        </div>
+        <div class="notice-right">
+          <h5 class="title">{{item.operateTime | date:'yyyy-MM-dd'}}&nbsp;{{item.nickname}}{{item.content}}</h5>
+          <p class="content">{{item.title}}</p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,64 @@
+.card {
+    margin: 0 !important;
+    margin-bottom: 10px !important;
+    box-shadow: none;
+  
+    .item {
+      padding-left: 5px !important;
+      .item-native {
+        padding-left: 5px !important;
+      }
+    }
+    .avatar {
+      width: 20px;
+      height: 20px;
+    }
+  
+    .header-title {
+      color: #999999;
+      font-size: 0.9rem;
+      margin-left: 10px;
+    }
+  
+    .more {
+      color: #464646;
+      font-size: 1.2rem;
+      transform: rotate(90deg);
+    }
+  
+    .content-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 10px 0 5px 16px;
+    }
+  
+    .content {
+      font-size: 0.9rem;
+      color: #999999;
+      padding: 5px;
+      padding-bottom: 0;
+      padding-left: 16px;
+      line-height: 20px;
+      text-overflow: -o-ellipsis-lastline;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      p {
+        color: #505050;
+        font-size: 1rem;
+      }
+    }
+    ion-row {
+      margin-bottom: 5px;
+    }
+    .note {
+      padding-left: 10px;
+      
+    }
+  }
+.comment {
+    display: flex;
+    align-items: center;
+}

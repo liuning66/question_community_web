@@ -4,6 +4,9 @@ import { StorageService } from 'src/app/service/storage.service';
 import { NavController, ModalController } from '@ionic/angular';
 import { LoginComponent } from 'src/app/component/login/login.component';
 import { UserCenterComponent } from 'src/app/component/user-center/user-center.component';
+import { QrScannerComponent } from 'src/app/component/qr-scanner/qr-scanner.component';
+import { GeneralListComponent } from 'src/app/component/general-list/general-list.component';
+import { VersionComponent } from 'src/app/component/version/version.component';
 @Component({
   selector: 'app-tab5',
   templateUrl: './tab-mine.page.html',
@@ -61,5 +64,40 @@ export class Tab5Page implements OnInit {
     this.storage.clear().then(() => {
       this.goToLoginPage();
     });
+  }
+  /**
+   * 前往二维码扫描页面
+   */
+  async goToQrScanner() {
+    const modal = await this.modalController.create({
+      component: QrScannerComponent,
+      animated: false
+    });
+    await modal.present();
+  }
+  /**
+   * 前往相应的页面
+   * @param 1 我的提问  2 我的文章 3 我的收藏 4 我的关注
+   */
+  async goToGeneralList(type: number) {
+    const modal = await this.modalController.create({
+      component: GeneralListComponent,
+      componentProps: {
+        type,
+        userId: this.user.id
+      }
+    });
+
+    await modal.present();
+  }
+
+  /**
+   * 前往关于页面
+   */
+  async goToVersionPage() {
+    const modal = await this.modalController.create({
+      component: VersionComponent,
+    });
+    await modal.present();
   }
 }

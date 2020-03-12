@@ -1,0 +1,55 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title slot="start">部落</ion-title>
+      <ion-button (tap)="addArticle()" fill="default" color="primary" slot="end">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+      <ion-refresher-content
+      pullingText = '下拉刷新'
+      refreshingSpinner='circles'
+      refreshingText="数据加载中"
+      ></ion-refresher-content>
+    </ion-refresher>
+    <ion-card type="button" class="card" *ngFor="let item of articleInfos">
+      <ion-item>
+        <ion-avatar class="avatar">
+          <img src="../../../assets/icon/drawable-hdpi-icon.png" />
+        </ion-avatar>
+        <p class="header-title">
+          {{dateParse(item.createTime)}} {{item.nickname}} 发表了该文章
+        </p>
+        <ion-button fill="default" slot="end">
+          <ion-icon name="more" class="more"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <div (tap)="goToArticleDetail(item)">
+        <h3 class="content-title">{{item.title}}</h3>
+        <ion-card-content class="content">
+          <p>{{item.content}}</p>
+        </ion-card-content>
+      </div>
+      <ion-row>
+        <ion-col size="3" center  class="comment">
+          <span style="margin-left: 16px;">{{item.commentNum}}&nbsp;&nbsp;评论</span>
+        </ion-col>
+        <ion-col size="9" text-right>
+        <div *ngIf="item.userId != userId">
+          <ion-button (click)="collect(item)" fill="default" color="secondary">
+            <ion-icon [name]="item.collection ? 'star' : 'star-outline'"></ion-icon> &nbsp; 收藏
+          </ion-button>
+          <ion-button (click)="approval(item)" fill="default" color="tertiary">
+            <ion-icon [name]="item.approval ? 'heart' : 'heart-empty'"></ion-icon> &nbsp; {{item.approvalNum}}
+          </ion-button>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-content>
+
+</ion-app>

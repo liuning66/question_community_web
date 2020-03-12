@@ -33,8 +33,14 @@
       </ion-row>
     </ion-grid>
   </div>
-
-  <ion-card type="button" class="card" *ngFor="let item of questionInfoList" (tap)="goToQuestionDetail(item)">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content
+    pullingText = '下拉刷新'
+    refreshingSpinner='circles'
+    refreshingText="数据加载中"
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-card type="button" class="card" *ngFor="let item of questionInfoList" >
     <ion-item>
       <ion-avatar class="avatar">
         <img src="../../../assets/icon/drawable-hdpi-icon.png" />
@@ -42,12 +48,16 @@
       <p class="header-title" >
        {{dateParse(item.questionTime)}}&nbsp; {{item.nickname}} 发表了该问题
       </p>
-      <ion-icon slot="end" name="more" class="more"></ion-icon>
+     <ion-button (click)="onClick()" fill="default" slot="end" >
+      <ion-icon name="more" class="more"></ion-icon>
+     </ion-button>
     </ion-item>
+   <div (tap)="goToQuestionDetail(item)">
     <h3 class="content-title">{{item.title}}</h3>
-    <ion-card-content class="content">
+    <ion-card-content class="content" >
       <p>{{item.content}}</p>
     </ion-card-content>
+   </div>
     <ion-row>
       <ion-col size="8" center text-left>
         <ion-note class="note">{{item.approve}}&nbsp;赞同&nbsp;&nbsp;{{item.commentNum}}&nbsp;评论&nbsp;&nbsp;关注问题</ion-note>
